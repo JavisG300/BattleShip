@@ -43,8 +43,32 @@ class Ship:
         
         print(f"El barco {self.name} fue colocado con éxito.")
         return True
+    
+    def hit(self):
+        """ 
+        Método para registrar impactos en el barco.
+        Devuelve Trues i el número de impactos 
+        (self.hits) es igual al tamaño del barco (self.size),
+        indicando que el barco ha sido hundido.
+        """
+        self.hits += 1 #Incrementa el contador de impactos
+        if self.hits == self.size:
+            print(f"El barco {self.name} ha sido hundido!")
+            return True
+        return False
+class Destroyer(Ship):
+    def __init__(self):
+        super().__init__('Destructor', 2)
 
-def create_ship(board, ship_number):
+class Submarine(Ship):
+    def __init__(self):
+        super().__init__('Submarino', 3)
+
+class Battleship(Ship):
+    def __init__(self):
+        super().__init__('Acorazado', 4)
+        
+""" def create_ship(board, ship_number):
     print(f"\nCreando Barco {ship_number}:")
     name = input("Nombra el Barco: \n")
     size = int(input("Define el largo del barco: \n"))
@@ -73,4 +97,4 @@ barco1 = create_ship(board, 1)
 barco2 = create_ship(board, 2)
 
 # Imprimir el tablero para verificar
-print_board(board)
+print_board(board) """
